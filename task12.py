@@ -8,22 +8,19 @@ def numbers (s, p):
     if (s**2 < 4 * p) or (s < 0) or (p < 0):
         return 'Ошибка!'
     
-    elif (s**2 - 4 * p)**0.5 > s and s / 2 - ((s**2 - 4 * p)**0.5) / 2 > 0: # x > 0 and y > 0
-        solution =  str(s + ((s**2 - 4 * p)**0.5) / 2) + \
-        ' ' + str(s / 2 - ((s**2 - 4 * p)**0.5) / 2)
+    x1, y1, x2, y2 = 0, 0, 0, 0
 
-    elif (s**2 - 4 * p)**0.5 < s:
+    x1 = (s + (s**2 - 4 * p)**0.5) / 2
+    y1 = s - x1
 
-        if s / 2 - ((s**2 - 4 * p)**0.5) / 2 <= 0:
-            solution = str(s - ((s**2 - 4 * p)**0.5) / 2) + \
-            ' ' + str(s / 2 + ((s**2 - 4 * p)**0.5) / 2)
-        
-        elif s / 2 - ((s**2 - 4 * p)**0.5) / 2 > 0:
-            solution = str(s - ((s**2 - 4 * p)**0.5) / 2) + \
-            ' ' + str(s / 2 + ((s**2 - 4 * p)**0.5) / 2) + \
-            ' ; ' + str(s + ((s**2 - 4 * p)**0.5) / 2) + \
-            ' ' + str(s / 2 - ((s**2 - 4 * p)**0.5) / 2)
-    
+    x2 = (s - (s**2 - 4 * p)**0.5) / 2
+    y2 = s - x2
+
+    if x1 > 0 and y1 > 0:
+        solution += str(x1) + ' ' + str(y1) + ' ; '
+    if x2 > 0 and y2 > 0:
+        solution += str(x2) + ' ' + str(y2)
+
     if solution == '':
         return 'Нет ответа'
     else:
